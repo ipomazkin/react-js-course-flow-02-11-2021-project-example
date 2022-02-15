@@ -4,22 +4,34 @@ export const routesKeys = {
   home: 'home',
   about: 'about',
   contacts: 'contacts',
+  cart: 'cart',
+  catalog: 'catalog',
 };
 
 export const routesConfig = [
   {
     key: routesKeys.home,
-    path: '/test/',
+    path: '/',
     pageTitle: 'Home',
   },
   {
     key: routesKeys.contacts,
-    path: '/test/contacts',
+    path: '/contacts',
     pageTitle: 'Contacts',
   },
   {
     key: routesKeys.about,
-    path: '/test/about',
+    path: '/about',
     pageTitle: 'About',
+  },
+  {
+    key: routesKeys.cart,
+    path: '/cart',
+    pageTitle: 'Cart',
+  },
+  {
+    key: routesKeys.catalog,
+    path: '/catalog',
+    pageTitle: 'Catalog',
   },
 ];

@@ -1,29 +1,14 @@
-import { createStore } from "redux";
+import { createStore, combineReducers } from "redux";
+import { configureStore } from "@reduxjs/toolkit";
+import settings from '../ducks/settings';
+import cartReducer from '../ducks/cart'
+import produce from "immer"
 
-const initialState = {
-  isMenuOpen: false,
-};
-
-export const SET_MENU_IS_OPEN = 'SET_MENU_IS_OPEN';
-
-export function setMenuIsOpen(isOpen) {
-  return {
-    type: SET_MENU_IS_OPEN,
-    payload: {
-      isOpen,
-    }
-  }
-}
-
-function rootReducer(state = initialState, action) {
-  if (action.type === SET_MENU_IS_OPEN) {
-    return {
-      ...state,
-      isMenuOpen: action.payload.isOpen,
-    }
-  }
-
-  return state
-}
-
-export const store = createStore(rootReducer);
+export const store = configureStore({
+  reducer: {
+    settings,
+    cart: cartReducer,
+    test: () => 1,
+  },
+  devTools: true,
+});
