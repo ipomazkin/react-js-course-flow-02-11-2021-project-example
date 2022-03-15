@@ -6,22 +6,26 @@ import { Provider } from "react-redux";
 import { store } from "./services/store";
 import { queryClient } from "./services/queryClient";
 import { QueryClientProvider } from "react-query";
+import CssBaseline from '@mui/material/CssBaseline';
 
 export function AppWrapper() {
   const [locale, setLocale] = useState(LOCALE_EN);
 
   return (
-    <BrowserRouter>
-      <QueryClientProvider client={queryClient}>
-        <Provider store={store}>
-          <localeContext.Provider value={{
-            locale,
-            setLocale,
-          }}>
-            <App />
-          </localeContext.Provider>
-        </Provider>
-      </QueryClientProvider>
-    </BrowserRouter>
+    <>
+      <CssBaseline />
+      <BrowserRouter>
+        <QueryClientProvider client={queryClient}>
+          <Provider store={store}>
+            <localeContext.Provider value={{
+              locale,
+              setLocale,
+            }}>
+              <App />
+            </localeContext.Provider>
+          </Provider>
+        </QueryClientProvider>
+      </BrowserRouter>
+    </>
   );
 }

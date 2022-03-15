@@ -6,6 +6,7 @@ export const routesKeys = {
   contacts: 'contacts',
   cart: 'cart',
   catalog: 'catalog',
+  registration: 'registration',
 };
 
 export const routesConfig = [
@@ -33,5 +34,10 @@ export const routesConfig = [
     key: routesKeys.catalog,
     path: '/catalog',
     pageTitle: 'Catalog',
+  },
+  {
+    key: routesKeys.registration,
+    path: '/registration',
+    pageTitle: 'Registration',
   },
 ];

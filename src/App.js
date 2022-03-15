@@ -12,6 +12,7 @@ import { routesConfig } from "./routesConfig";
 import { useCart } from "./hooks/useCart";
 import { useDispatch } from "react-redux";
 import { reset } from "./ducks/cart";
+import { Box, Grid } from '@mui/material';
 
 export function App() {
   const cart = useCart();
@@ -39,21 +40,17 @@ export function App() {
   }, [cart]);
 
   return (
-    <div className="app">
-      <div className="app__header">
-        <Header />
-        <div>
-          <ul>
-            {routesConfig.map((route) => (
-              <li key={route.key}>
-                <NavLink to={route.path}>{route.pageTitle}</NavLink>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-
-      <div className="app__content">
+    <Grid container spacing={2} sx={{ minHeight: '100vh' }}>
+      <Grid item xs={3}>
+        <ul>
+          {routesConfig.map((route) => (
+            <li key={route.key}>
+              <NavLink to={route.path}>{route.pageTitle}</NavLink>
+            </li>
+          ))}
+        </ul>
+      </Grid>
+      <Grid item xs={9}>
         <Routes>
           {routesForRender.map((route) => (
             <Route key={route.key} path={route.path} element={<route.element />} />
@@ -65,7 +62,7 @@ export function App() {
           <Route path="/news/:id" element={<NewsItemPage />} />
           <Route path="*" element={<Page404 />} />
         </Routes>
-      </div>
-    </div>
+      </Grid>
+    </Grid>
   );
 }
